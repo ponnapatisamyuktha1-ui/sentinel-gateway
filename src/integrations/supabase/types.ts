@@ -14,13 +14,177 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      agents: {
+        Row: {
+          allowed_resources: string[]
+          allowed_tools: string[]
+          clearance: string
+          created_at: string
+          description: string
+          id: string
+          name: string
+          owner_id: string
+          status: string
+        }
+        Insert: {
+          allowed_resources?: string[]
+          allowed_tools?: string[]
+          clearance?: string
+          created_at?: string
+          description?: string
+          id?: string
+          name: string
+          owner_id: string
+          status?: string
+        }
+        Update: {
+          allowed_resources?: string[]
+          allowed_tools?: string[]
+          clearance?: string
+          created_at?: string
+          description?: string
+          id?: string
+          name?: string
+          owner_id?: string
+          status?: string
+        }
+        Relationships: []
+      }
+      audit_logs: {
+        Row: {
+          action: string
+          agent_name: string
+          created_at: string
+          decision: string
+          executed: boolean
+          id: string
+          owner_id: string
+          reasons: string[]
+          source: string
+          target: string
+          threat_level: string
+        }
+        Insert: {
+          action: string
+          agent_name: string
+          created_at?: string
+          decision: string
+          executed?: boolean
+          id?: string
+          owner_id: string
+          reasons?: string[]
+          source?: string
+          target?: string
+          threat_level: string
+        }
+        Update: {
+          action?: string
+          agent_name?: string
+          created_at?: string
+          decision?: string
+          executed?: boolean
+          id?: string
+          owner_id?: string
+          reasons?: string[]
+          source?: string
+          target?: string
+          threat_level?: string
+        }
+        Relationships: []
+      }
+      emails: {
+        Row: {
+          body: string
+          id: string
+          owner_id: string
+          received_at: string
+          scan: Json | null
+          sender: string
+          subject: string
+        }
+        Insert: {
+          body: string
+          id?: string
+          owner_id: string
+          received_at?: string
+          scan?: Json | null
+          sender: string
+          subject: string
+        }
+        Update: {
+          body?: string
+          id?: string
+          owner_id?: string
+          received_at?: string
+          scan?: Json | null
+          sender?: string
+          subject?: string
+        }
+        Relationships: []
+      }
+      policies: {
+        Row: {
+          approval_required_tools: string[]
+          block_secrets: boolean
+          owner_id: string
+          prohibited_tools: string[]
+          redact_pii: boolean
+          review_confidential_external: boolean
+          trusted_domains: string[]
+          updated_at: string
+        }
+        Insert: {
+          approval_required_tools?: string[]
+          block_secrets?: boolean
+          owner_id: string
+          prohibited_tools?: string[]
+          redact_pii?: boolean
+          review_confidential_external?: boolean
+          trusted_domains?: string[]
+          updated_at?: string
+        }
+        Update: {
+          approval_required_tools?: string[]
+          block_secrets?: boolean
+          owner_id?: string
+          prohibited_tools?: string[]
+          redact_pii?: boolean
+          review_confidential_external?: boolean
+          trusted_domains?: string[]
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      resources: {
+        Row: {
+          classification: string
+          created_at: string
+          id: string
+          owner_id: string
+          path: string
+        }
+        Insert: {
+          classification?: string
+          created_at?: string
+          id?: string
+          owner_id: string
+          path: string
+        }
+        Update: {
+          classification?: string
+          created_at?: string
+          id?: string
+          owner_id?: string
+          path?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      seed_demo_workspace: { Args: { _uid: string }; Returns: undefined }
     }
     Enums: {
       [_ in never]: never
